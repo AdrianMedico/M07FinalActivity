@@ -4,15 +4,18 @@ import javax.swing.JPanel;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Properties;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
+import java.awt.Window;
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+
 import java.awt.Component;
 import javax.swing.Box;
 import java.awt.Dimension;
@@ -28,6 +31,15 @@ public class SelectorPanel extends JPanel implements ActionListener {
 	private JPanel modePanel, difPanel, sizePanel, cancelOKPanel;
 	protected int size, diff, mode;
 	protected boolean isImage;
+	
+	/*
+	public static void main(String[] args) {
+		JFrame jf = new JFrame();
+		SelectorPanel sp = new SelectorPanel();
+		jf.add(sp);
+		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	*/
 	
 	/**
 	 * Create the panel.
@@ -74,6 +86,7 @@ public class SelectorPanel extends JPanel implements ActionListener {
 		p.add(lblMode);
 
 		JRadioButton rbtnChecking = new JRadioButton("Checking");
+		rbtnChecking.setBackground(new Color(173, 216, 230));
 		rbtnChecking.setFont(new Font("Dialog", Font.BOLD, 13));
 		buttonGroupMode.add(rbtnChecking);
 		rbtnChecking.setActionCommand("checking");
@@ -82,6 +95,7 @@ public class SelectorPanel extends JPanel implements ActionListener {
 		p.add(rbtnChecking);
 
 		JRadioButton rdbtnTraining = new JRadioButton("Training");
+		rdbtnTraining.setBackground(new Color(144, 238, 144));
 		rdbtnTraining.setFont(new Font("Dialog", Font.BOLD, 13));
 		buttonGroupMode.add(rdbtnTraining);
 		rdbtnTraining.setActionCommand("training");
@@ -90,6 +104,7 @@ public class SelectorPanel extends JPanel implements ActionListener {
 		p.add(rdbtnTraining);
 
 		JRadioButton rdbtnStandalone = new JRadioButton("Stand-alone");
+		rdbtnStandalone.setBackground(new Color(221, 160, 221));
 		rdbtnStandalone.setFont(new Font("Dialog", Font.BOLD, 13));
 		buttonGroupMode.add(rdbtnStandalone);
 		rdbtnStandalone.setActionCommand("alone");
@@ -98,6 +113,7 @@ public class SelectorPanel extends JPanel implements ActionListener {
 		p.add(rdbtnStandalone);
 
 		JRadioButton rdbtnSpeed = new JRadioButton("Speed");
+		rdbtnSpeed.setBackground(new Color(255, 250, 205));
 		rdbtnSpeed.setFont(new Font("Dialog", Font.BOLD, 13));
 		buttonGroupMode.add(rdbtnSpeed);
 		rdbtnSpeed.setActionCommand("speed");
@@ -214,7 +230,7 @@ public class SelectorPanel extends JPanel implements ActionListener {
 		btCancel.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-//				e.
+				((Window) getRootPane().getParent()).dispose();
 			}
 		});
 		cancelOK.add(btCancel);
@@ -227,8 +243,8 @@ public class SelectorPanel extends JPanel implements ActionListener {
 		btnContinue.addActionListener(new ActionListener() {
 			
 			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
+			public void actionPerformed(ActionEvent e) {
+				((Window) getRootPane().getParent()).setVisible(false);;
 				
 			}
 		});
