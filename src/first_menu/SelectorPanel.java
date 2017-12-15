@@ -4,9 +4,13 @@ import javax.swing.JPanel;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
+import javax.swing.JToggleButton;
 import javax.swing.ButtonGroup;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
@@ -85,14 +89,15 @@ public class SelectorPanel extends JPanel implements ActionListener {
 		lblMode.setHorizontalAlignment(SwingConstants.CENTER);
 		p.add(lblMode);
 
-		JRadioButton rbtnChecking = new JRadioButton("Checking");
-		rbtnChecking.setBackground(new Color(173, 216, 230));
-		rbtnChecking.setFont(new Font("Dialog", Font.BOLD, 13));
-		buttonGroupMode.add(rbtnChecking);
-		rbtnChecking.setActionCommand("checking");
-		rbtnChecking.setHorizontalAlignment(SwingConstants.CENTER);
-		rbtnChecking.addActionListener(new ActionModeListener());
-		p.add(rbtnChecking);
+		JRadioButton rdbtnChecking = new JRadioButton("Checking");
+		rdbtnChecking.setBackground(new Color(173, 216, 230));
+		rdbtnChecking.setFont(new Font("Dialog", Font.BOLD, 13));
+		buttonGroupMode.add(rdbtnChecking);
+		rdbtnChecking.setActionCommand("checking");
+		rdbtnChecking.setHorizontalAlignment(SwingConstants.CENTER);
+		rdbtnChecking.addActionListener(new ActionModeListener());
+		rdbtnChecking.addMouseListener(new MouseHoverAdapter());
+		p.add(rdbtnChecking);
 
 		JRadioButton rdbtnTraining = new JRadioButton("Training");
 		rdbtnTraining.setBackground(new Color(144, 238, 144));
@@ -101,6 +106,7 @@ public class SelectorPanel extends JPanel implements ActionListener {
 		rdbtnTraining.setActionCommand("training");
 		rdbtnTraining.setHorizontalAlignment(SwingConstants.CENTER);
 		rdbtnTraining.addActionListener(new ActionModeListener());
+		rdbtnTraining.addMouseListener(new MouseHoverAdapter());
 		p.add(rdbtnTraining);
 
 		JRadioButton rdbtnStandalone = new JRadioButton("Stand-alone");
@@ -110,6 +116,7 @@ public class SelectorPanel extends JPanel implements ActionListener {
 		rdbtnStandalone.setActionCommand("alone");
 		rdbtnStandalone.setHorizontalAlignment(SwingConstants.CENTER);
 		rdbtnStandalone.addActionListener(new ActionModeListener());
+		rdbtnStandalone.addMouseListener(new MouseHoverAdapter());
 		p.add(rdbtnStandalone);
 
 		JRadioButton rdbtnSpeed = new JRadioButton("Speed");
@@ -119,6 +126,7 @@ public class SelectorPanel extends JPanel implements ActionListener {
 		rdbtnSpeed.setActionCommand("speed");
 		rdbtnSpeed.setHorizontalAlignment(SwingConstants.CENTER);
 		rdbtnSpeed.addActionListener(new ActionModeListener());
+		rdbtnSpeed.addMouseListener(new MouseHoverAdapter());
 		p.add(rdbtnSpeed);
 
 		return p;
@@ -140,6 +148,7 @@ public class SelectorPanel extends JPanel implements ActionListener {
 		rdbtnEasy.setHorizontalAlignment(SwingConstants.CENTER);
 		buttonGroupDifficult.add(rdbtnEasy);
 		rdbtnEasy.addActionListener(new ActionDiffListener());
+		rdbtnEasy.addMouseListener(new MouseHoverAdapter());
 		rdbtnEasy.setActionCommand("easy");
 		diff.add(rdbtnEasy);
 
@@ -149,6 +158,7 @@ public class SelectorPanel extends JPanel implements ActionListener {
 		rdbtnMedium.setHorizontalAlignment(SwingConstants.CENTER);
 		buttonGroupDifficult.add(rdbtnMedium);
 		rdbtnMedium.addActionListener(new ActionDiffListener());
+		rdbtnMedium.addMouseListener(new MouseHoverAdapter());
 		rdbtnMedium.setActionCommand("medium");
 		diff.add(rdbtnMedium);
 
@@ -158,6 +168,7 @@ public class SelectorPanel extends JPanel implements ActionListener {
 		rdbtnHard.setHorizontalAlignment(SwingConstants.CENTER);
 		buttonGroupDifficult.add(rdbtnHard);
 		rdbtnHard.addActionListener(new ActionDiffListener());
+		rdbtnHard.addMouseListener(new MouseHoverAdapter());
 		rdbtnHard.setActionCommand("hard");
 		diff.add(rdbtnHard);
 
@@ -167,6 +178,7 @@ public class SelectorPanel extends JPanel implements ActionListener {
 		rdbtnWicked.setHorizontalAlignment(SwingConstants.CENTER);
 		buttonGroupDifficult.add(rdbtnWicked);
 		rdbtnWicked.addActionListener(new ActionDiffListener());
+		rdbtnWicked.addMouseListener(new MouseHoverAdapter());
 		rdbtnWicked.setActionCommand("wicked");
 		diff.add(rdbtnWicked);
 
@@ -191,6 +203,7 @@ public class SelectorPanel extends JPanel implements ActionListener {
 		rdbtnx.setHorizontalAlignment(SwingConstants.CENTER);
 		rdbtnx.setActionCommand("9x9");
 		rdbtnx.addActionListener(new ActionSizeListener());
+		rdbtnx.addMouseListener(new MouseHoverAdapter());
 		siz.add(rdbtnx);
 
 		JRadioButton rdbtnx_1 = new JRadioButton("4x4");
@@ -200,6 +213,7 @@ public class SelectorPanel extends JPanel implements ActionListener {
 		rdbtnx_1.setHorizontalAlignment(SwingConstants.CENTER);
 		rdbtnx_1.setActionCommand("4x4");
 		rdbtnx_1.addActionListener(new ActionSizeListener());
+		rdbtnx_1.addMouseListener(new MouseHoverAdapter());
 		siz.add(rdbtnx_1);
 
 		JRadioButton rdbtnx_2 = new JRadioButton("6x6");
@@ -209,6 +223,7 @@ public class SelectorPanel extends JPanel implements ActionListener {
 		rdbtnx_2.setHorizontalAlignment(SwingConstants.CENTER);
 		rdbtnx_2.setActionCommand("6x6");
 		rdbtnx_2.addActionListener(new ActionSizeListener());
+		rdbtnx_2.addMouseListener(new MouseHoverAdapter());
 		siz.add(rdbtnx_2);
 
 		JRadioButton rdbtnx_3 = new JRadioButton("4x4 with images");
@@ -218,6 +233,7 @@ public class SelectorPanel extends JPanel implements ActionListener {
 		rdbtnx_3.setHorizontalAlignment(SwingConstants.CENTER);
 		rdbtnx_3.setActionCommand("4x4img");
 		rdbtnx_3.addActionListener(new ActionSizeListener());
+		rdbtnx_3.addMouseListener(new MouseHoverAdapter());
 		siz.add(rdbtnx_3);
 
 		return siz;
@@ -325,7 +341,6 @@ public class SelectorPanel extends JPanel implements ActionListener {
 			}
 		}
 	}
-
 	class ActionDiffListener implements ActionListener {
 
 		@Override
@@ -345,5 +360,25 @@ public class SelectorPanel extends JPanel implements ActionListener {
 				break;
 			}
 		}
+	}
+	class MouseHoverAdapter extends MouseAdapter {
+		Color c;
+		JToggleButton tglbtnX;
+		
+		
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			super.mouseEntered(e);
+			tglbtnX = (JToggleButton) e.getSource();
+			c = tglbtnX.getBackground();
+			tglbtnX.setBackground(Color.BLACK); //You shoud change the color type!!
+		}
+		
+		@Override
+		public void mouseExited(MouseEvent e) {
+			super.mouseExited(e);
+			tglbtnX.setBackground(c);
+		}
+		
 	}
 }
